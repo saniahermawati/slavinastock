@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlavinaStock Basic & Pro</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff5f6;
+  color: #26384b;
+}
+
+header {
+  background: #ffe0eb;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #f5b8cc;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #c52667;
+}
+
+h1, h2, h3 {
+  color: #941b50;
+}
+
+main {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 17px;
+  border: 1px solid #f2c6d5;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 12px #a51d4810;
+}
+
+button {
+  border: 0;
+  padding: 11px 15px;
+  border-radius: 10px;
+  background: #d72c70;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 3px;
+}
+
+button:hover {
+  opacity: .8;
+}
+
+input, select {
+  padding: 11px;
+  border: 1px solid #e6b8c8;
+  border-radius: 8px;
+  width: 100%;
+  margin: 5px 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+nav button {
+  background: #ffe1eb;
+  color: #851744;
+}
+
+nav button.active {
+  background: #d72c70;
+  color: white;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.plan-card {
+  background: white;
+  border: 2px solid #f2c6d5;
+  border-radius: 20px;
+  padding: 22px;
+}
+
+.plan-card.pro {
+  border-color: #d72c70;
+}
+
+.price {
+  font-size: 27px;
+  font-weight: bold;
+  color: #d72c70;
+}
+
+.plan-card button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.stat {
+  background: white;
+  padding: 18px;
+  border-radius: 15px;
+  border: 1px solid #f2c6d5;
+}
+
+.stat p {
+  font-size: 13px;
+  color: #666;
+}
+
+.stat strong {
+  font-size: 26px;
+  color: #d72c70;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 11px;
+  text-align: left;
+  border-bottom: 1px solid #f3dce4;
+  font-size: 14px;
+}
+
+th {
+  color: #a21e54;
+}
+
+.small {
+  padding: 7px;
+  font-size: 12px;
+}
+
+.red {
+  background: #b72a48;
+}
+
+.hidden {
+  display: none !important;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #ffe1eb;
+  color: #841743;
+  margin-top: 30px;
+}
+
+@media(max-width:650px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    font-size: 27px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">♛ SlavinaStock</div>
+  <h2>Basic & Pro</h2>
+  <p>Aplikasi Web Inventaris Barang</p>
+  <p>Kelola stok jadi lebih mudah!</p>
+</header>
+
+<main>
+
+<section id="pilihPaket">
+  <div class="box">
+    <h1>Selamat Datang di SlavinaStock 💗</h1>
+    <p>Pilih paket yang kamu inginkan.</p>
+  </div>
+
+  <div class="plan-grid">
+
+    <div class="plan-card">
+      <h2>♛ SlavinaStock Basic</h2>
+      <p>Cocok untuk UMKM dan bisnis kecil.</p>
+      <div class="price">Rp75.000/bulan</div>
+      <ul>
+        <li>Dashboard inventaris</li>
+        <li>Kelola data barang</li>
+        <li>Transaksi masuk dan keluar</li>
+        <li>Laporan stok</li>
+        <li>Pencarian barang</li>
+      </ul>
+      <button onclick="masukMode('basic')">
+        Masuk Basic
+      </button>
+    </div>
+
+    <div class="plan-card pro">
+      <h2>♛ SlavinaStock Pro</h2>
+      <p>Untuk bisnis yang lebih besar.</p>
+      <div class="price">Rp100.000/bulan</div>
+      <ul>
+        <li>Semua fitur Basic</li>
+        <li>Analitik lebih lengkap</li>
+        <li>Menu Supplier</li>
+        <li>Multi-user (demo)</li>
+        <li>Laporan lanjutan</li>
+      </ul>
+      <button onclick="masukMode('pro')">
+        Masuk Pro ✨
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<section id="aplikasi" class="hidden">
+  <div class="box">
+    <h2 id="judulMode">SlavinaStock Basic</h2>
+    <button onclick="kembaliPaket()">Ganti Paket</button>
+  </div>
+
+  <nav id="navigasi"></nav>
+
+  <section id="dashboard" class="page active">
+    <div class="box">
+      <h1>Halo, Admin! 👋</h1>
+      <p>Selamat datang di SlavinaStock.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <p>Total Jenis Barang</p>
+        <strong id="total">0</strong>
+      </div>
+      <div class="stat">
+        <p>Stok Menipis</p>
+        <strong id="menipis">0</strong>
+      </div>
+      <div class="stat">
+        <p>Barang Masuk</p>
+        <strong id="masuk">0</strong>
+      </div>
+      <div class="stat">
+        <p>Barang Keluar</p>
+        <strong id="keluar">0</strong>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Barang Stok Terbanyak</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nama Barang</th>
+              <th>Kategori</th>
+              <th>Stok</th>
+            </tr>
+          </thead>
+          <tbody id="stokTerbanyak"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Aktivitas Terbaru</h2>
+      <div id="aktivitas">Belum ada transaksi.</div>
+    </div>
+  </section>
+
+  <section id="barang" class="page">
+    <div class="box">
+      <h2>Kelola Data Barang</h2>
+      <input id="nama" placeholder="Nama barang">
+
+      <select id="kategori">
+        <option>Alat Tulis</option>
+        <option>Elektronik</option>
+        <option>Perlengkapan</option>
+        <option>Lainnya</option>
+      </select>
+
+      <input id="stok" type="number" min="0" placeholder="Jumlah stok">
+      <input id="minimum" type="number" min="0" placeholder="Stok minimum">
+      <input id="harga" type="number" min="0" placeholder="Harga satuan">
+
+      <button onclick="simpanBarang()">+ Simpan Barang</button>
+      <input id="cari" placeholder="Cari barang..." oninput="tampilBarang()">
+    </div>
+
+    <div class="box">
+      <h2>Daftar Barang</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th>Stok</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="daftarBarang"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="transaksi" class="page">
+    <div class="box">
+      <h2>Transaksi Barang</h2>
+
+      <label>Pilih barang</label>
+      <select id="pilihBarang"></select>
+
+      <label>Jenis transaksi</label>
+      <select id="jenis">
+        <option value="Masuk">Barang Masuk</option>
+        <option value="Keluar">Barang Keluar</option>
+      </select>
+
+      <label>Jumlah</label>
+      <input id="jumlah" type="number" min="1" value="1">
+
+      <label>Catatan</label>
+      <input id="catatan" placeholder="Catatan transaksi">
+
+      <button onclick="transaksiBarang()">Simpan Transaksi</button>
+    </div>
+
+    <div class="box">
+      <h2>Riwayat Transaksi</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Barang</th>
+              <th>Jenis</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody id="riwayat"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="laporan" class="page">
+    <div class="box">
+      <h2>Laporan Stok</h2>
+      <p>Total unit stok: <strong id="unit">0</strong></p>
+      <p>Nilai stok: <strong id="nilai">Rp0</strong></p>
+
+      <button onclick="unduhLaporan()">Unduh Laporan CSV</button>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Barang</th>
+              <th>Stok</th>
+              <th>Harga</th>
+              <th>Nilai Stok</th>
+            </tr>
+          </thead>
+          <tbody id="tabelLaporan"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="supplier" class="page">
+    <div class="box">
+      <h2>Supplier Pro</h2>
+      <p>Menu tambahan paket Pro.</p>
+      <input id="supplierNama" placeholder="Nama supplier">
+      <input id="supplierKontak" placeholder="Kontak supplier">
+      <button onclick="tambahSupplier()">Tambah Supplier</button>
+      <ul id="daftarSupplier"></ul>
+    </div>
+  </section>
+
+  <section id="analitik" class="page">
+    <div class="box">
+      <h2>Analitik Pro 📊</h2>
+      <p>Total transaksi: <strong id="jumlahTransaksi">0</strong></p>
+      <p>Total nilai persediaan: <strong id="nilaiPro">Rp0</strong></p>
+      <p>Halaman ini khusus untuk mode Pro.</p>
+    </div>
+  </section>
+
+  <section id="pengguna" class="page">
+    <div class="box">
+      <h2>Multi-user Pro 👥</h2>
+      <p>Simulasi daftar anggota tim.</p>
+      <input id="namaPengguna" placeholder="Nama anggota">
+      <button onclick="tambahPengguna()">Tambah Anggota</button>
+      <ul id="daftarPengguna"></ul>
+    </div>
+  </section>
+
+</section>
+</main>
+
+<footer>
+  <h2>♛ SlavinaStock</h2>
+  Simple · Terpercaya · Efisien
+  <p>Aplikasi Inventaris Barang</p>
+</footer>
